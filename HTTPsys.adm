@@ -1,0 +1,110 @@
+CLASS MACHINE
+CATEGORY "HTTP.sys"
+	KEYNAME "HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\HTTP\Parameters"
+	POLICY "AllowRestrictedChars"
+		EXPLAIN !!AllowRestrictedChars
+			VALUENAME "AllowRestrictedChars"
+				VALUEON NUMERIC 1
+				VALUEOFF NUMERIC 0
+	END POLICY
+	POLICY "EnableAggressiveMemoryUsage"
+		EXPLAIN !!EnableAggressiveMemoryUsage
+			VALUENAME "EnableAggressiveMemoryUsage"
+				VALUEON NUMERIC 1
+				VALUEOFF NUMERIC 0
+	END POLICY
+	POLICY "EnableNonUTF8"
+		EXPLAIN !!EnableNonUTF8
+			VALUENAME "EnableNonUTF8"
+				VALUEON NUMERIC 1
+				VALUEOFF NUMERIC 0
+	END POLICY
+	POLICY "FavorUTF8"
+		EXPLAIN !!FavorUTF8
+			VALUENAME "FavorUTF8"
+				VALUEON NUMERIC 1
+				VALUEOFF NUMERIC 0
+	END POLICY
+	POLICY "PercentUAllowed"
+		EXPLAIN !!PercentUAllowed
+			VALUENAME "PercentUAllowed"
+				VALUEON NUMERIC 1
+				VALUEOFF NUMERIC 0
+	END POLICY
+	POLICY "UriEnableCache"
+		EXPLAIN !!UriEnableCache
+			VALUENAME "UriEnableCache"
+				VALUEON NUMERIC 1
+				VALUEOFF NUMERIC 0
+	END POLICY
+	POLICY "MaxBytesPerSend"
+		EXPLAIN !!MaxBytesPerSend
+			PART !!MaxBytesPerSend EDITTEXT
+				VALUENAME "MaxBytesPerSend"
+			END PART
+	END POLICY
+	POLICY "MaxConnections"
+		EXPLAIN !!MaxConnections
+			PART !!MaxConnections EDITTEXT
+				VALUENAME "MaxConnections"
+			END PART
+	END POLICY
+	POLICY "MaxEndpoints"
+		EXPLAIN !!MaxEndpoints
+			PART !!MaxEndpoints EDITTEXT
+				VALUENAME "MaxEndpoints"
+			END PART
+	END POLICY
+	POLICY "MaxFieldLength"
+		EXPLAIN !!MaxFieldLength
+			PART !!MaxFieldLength EDITTEXT
+				VALUENAME "MaxFieldLength"
+			END PART
+	END POLICY
+	POLICY "MaxRequestBytes"
+		EXPLAIN !!MaxRequestBytes
+			PART !!MaxRequestBytes EDITTEXT
+				VALUENAME "MaxRequestBytes"
+			END PART
+	END POLICY
+	POLICY "UrlSegmentMaxCount"
+		EXPLAIN !!UrlSegmentMaxCount
+			PART !!UrlSegmentMaxCount EDITTEXT
+				VALUENAME "UrlSegmentMaxCount"
+			END PART
+	END POLICY
+	POLICY "UriMaxUriBytes"
+		EXPLAIN !!UriMaxUriBytes
+			PART !!UriMaxUriBytes EDITTEXT
+				VALUENAME "UriMaxUriBytes"
+			END PART
+	END POLICY
+	POLICY "UriScavengerPeriod"
+		EXPLAIN !!UriScavengerPeriod
+			PART !!UriScavengerPeriod EDITTEXT
+				VALUENAME "UriScavengerPeriod"
+			END PART
+	END POLICY
+	POLICY "UrlSegmentMaxLength"
+		EXPLAIN !!UrlSegmentMaxLength
+			PART !!UrlSegmentMaxLength EDITTEXT
+				VALUENAME "UrlSegmentMaxLength"
+			END PART
+	END POLICY
+END CATEGORY
+[strings]
+AllowRestrictedChars="If nonzero, Http.sys accepts hex-escaped chars in request URLs that decode to U+0000 – U+001F and U+007F – U+009F ranges."
+EnableAggressiveMemoryUsage="reallocate nonpaged pool memory. By default, the HTTP service stops accepting connections when less than 20 megabytes (MB) of nonpaged pool memory is available. After you add this value to the registry, the HTTP service stops accepting connections when less than 8 MB of nonpaged pool memory is available. Setting this registry value may reduce the number of "Connections_refused" and 503 errors in the Httperr.log file. "
+EnableNonUTF8="If zero, Http.sys accepts only UTF-8-encoded URLs. If nonzero, Http.sys also accepts ANSI- or DBCS-encoded URLs in requests."
+FavorUTF8="If nonzero, Http.sys always tries to decode a URL as UTF-8 first; if that conversion fails and EnableNonUTF8 is nonzero, Http.sys then tries to decode it as ANSI or DBCS. If zero (and EnableNonUTF8 is nonzero), Http.sys tries to decode it as ANSI or DBCS; if that is not successful, it tries a UTF-8 conversion."
+PercentUAllowed="If nonzero, Http.sys accepts the %uNNNN notation in request URLs."
+UriEnableCache="If nonzero, the Http.sys response and fragment cache is enabled."
+MaxBytesPerSend="Overrides the TCP window size that is used by Http.sys. A higher value may enable higher download speeds in network environments that have high bandwidth and high latency."
+MaxConnections="Overrides the MaxConnections calculation in the driver. This is primarily a function of memory."
+MaxEndpoints="The maximum number of current endpoint objects that are permitted. The default value of zero implies that the maximum is computed from available memory."
+MaxFieldLength="Sets an upper limit for each header. See MaxRequestBytes. This limit translates to approximately 32k characters for a URL."
+MaxRequestBytes="Determines the upper limit for the total size of the Request line and the headers.Its default setting is 16KB. If this value is lower than MaxFieldLength, the MaxFieldLength value is adjusted."
+UrlSegmentMaxCount="Maximum number of URL path segments. If zero, the count bounded by the maximum value of a ULONG."
+UriMaxUriBytes="Any response that is greater than this value is not cached in the kernel response cache."
+UriScavengerPeriod="Determines the frequency of the cache scavenger. Any response or fragment that has not been accessed in the number of seconds equal to UriScavengerPeriod is flushed."
+UrlSegmentMaxLength="Maximum number of characters in a URL path segment (the area between the slashes in the URL). If zero, it is the length that is bounded by the maximum value of a ULONG."
