@@ -1,0 +1,14 @@
+; http://support.microsoft.com/kb/2934207
+
+CLASS MACHINE
+CATEGORY "Windows XP EOS notification"
+KEYNAME "SOFTWARE\Microsoft\Windows\CurrentVersion"
+POLICY !!EOSNotification
+EXPLAIN !!EOSNotification
+VALUENAME "DisableEOSNotification"
+VALUEON NUMERIC 1
+VALUEOFF NUMERIC 0
+END POLICY
+END CATEGORY
+[strings]
+EOSNotification="Disable EOS Notification"
