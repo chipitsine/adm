@@ -1,6 +1,6 @@
 ; http://support.microsoft.com/kb/2934207
 
-CLASS MACHINE
+CLASS USER
 CATEGORY "Windows XP EOS notification"
 KEYNAME "SOFTWARE\Microsoft\Windows\CurrentVersion"
 POLICY !!EOSNotification
