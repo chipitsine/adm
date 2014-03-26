@@ -1,0 +1,12 @@
+CLASS MACHINE
+CATEGORY "Windows DNS Server"
+KEYNAME "SYSTEM\CurrentControlSet\Services\DNS\Parameters"
+POLICY !!DNS
+EXPLAIN !!DNS
+VALUENAME "OpenACLOnProxyUpdates"
+VALUEON NUMERIC 0
+VALUEOFF NUMERIC 1
+END POLICY
+END CATEGORY
+[strings]
+DNS="DnsUpdateProxy integration"
